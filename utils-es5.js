@@ -83,5 +83,9 @@ var utils = {
     script.onload = function () {
       callback && callback()
     }
+  },
+  
+  isSafari: function () {
+    return /Safari/.test(navigator.userAgent) && !/Chrome/.test(navigator.userAgent)
   }
 }
