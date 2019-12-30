@@ -87,5 +87,32 @@ var utils = {
   
   isSafari: function () {
     return /Safari/.test(navigator.userAgent) && !/Chrome/.test(navigator.userAgent)
+  },
+  
+  addClass: function ($el, className) {
+    if ($el.className.indexOf(className) <= -1) {
+      $el.className += ' ' + className
+    }
+  },
+
+  hasClass: function ($el, className) {
+    return $el.className.indexOf(className) > -1
+  },
+
+  removeClass: function ($el, className) {
+    if ($el.length) { // 数组
+      $el.forEach(function (el) {
+        remove(el)
+      })
+    } else { // 对象
+      remove($el)
+    }
+
+    function remove (el) {
+      if (el.className.indexOf(className) > -1) {
+        var reg = new RegExp(className)
+        el.className = el.className.replace(reg, '')
+      }
+    }
   }
 }
