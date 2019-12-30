@@ -114,5 +114,16 @@ var utils = {
         el.className = el.className.replace(reg, '')
       }
     }
+  },
+  
+  parents: function ($el, className) {
+    var el = $el
+    while (el.className) {
+      if (el.className.indexOf(className) > -1) {
+        return el
+        break;
+      }
+      el = el.parentNode || {}
+    }
   }
 }
